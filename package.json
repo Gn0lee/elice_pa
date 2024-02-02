@@ -10,9 +10,11 @@
 		"prettier": "prettier --write --config ./.prettierrc './**/*.{ts,tsx,js,jsx,json}'"
 	},
 	"dependencies": {
-		"next": "14.1.0",
+		"next": "13.5.6",
 		"react": "^18",
-		"react-dom": "^18"
+		"react-dom": "^18",
+		"styled-components": "^6.1.8",
+		"styled-normalize": "^8.1.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20",
