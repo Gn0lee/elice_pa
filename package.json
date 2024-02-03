@@ -10,6 +10,8 @@
 		"prettier": "prettier --write --config ./.prettierrc './**/*.{ts,tsx,js,jsx,json}'"
 	},
 	"dependencies": {
+		"axios": "^1.6.7",
+		"lodash.uniq": "^4.5.0",
 		"next": "13.5.6",
 		"react": "^18",
 		"react-dom": "^18",
@@ -17,7 +19,8 @@
 		"styled-normalize": "^8.1.0"
 	},
 	"devDependencies": {
-		"@types/node": "^20",
+		"@types/lodash.uniq": "^4.5.9",
+		"@types/node": "^18.19.0",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
 		"@typescript-eslint/eslint-plugin": "^5.48.0",
