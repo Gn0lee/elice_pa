@@ -5,6 +5,11 @@ import { normalize } from 'styled-normalize';
 
 const globalStyle = css`
 	${normalize}
+
+	* {
+		box-sizing: border-box;
+	}
+
 	html {
 		width: 100%;
 		height: 100%;
@@ -13,7 +18,7 @@ const globalStyle = css`
 	body {
 		margin: 0;
 		padding: 0;
-		box-sizing: border-box;
+
 		width: 100%;
 		height: 100%;
 		-webkit-font-smoothing: antialiased;

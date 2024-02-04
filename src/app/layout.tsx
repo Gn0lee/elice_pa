@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import React from 'react';
+import localFont from 'next/font/local';
 
 import StyledComponentsRegistry from '@/app/components/registry';
 import GlobalStyle from '@/app/components/GlobalStyle';
 import MainContainer from '@/app/components/MainContainer';
-import localFont from 'next/font/local';
+import Providers from '@/app/components/provider';
 
 const pretendardFont = localFont({
 	src: [
@@ -35,7 +36,9 @@ export default function RootLayout({
 			<body>
 				<StyledComponentsRegistry>
 					<GlobalStyle />
-					<MainContainer>{children}</MainContainer>
+					<Providers>
+						<MainContainer>{children}</MainContainer>
+					</Providers>
 				</StyledComponentsRegistry>
 			</body>
 		</html>

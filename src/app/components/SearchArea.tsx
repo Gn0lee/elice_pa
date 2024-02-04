@@ -33,6 +33,8 @@ const Input = styled.input`
 
 	padding: 12px 0;
 
+	margin-right: 16px;
+
 	font-size: 14px;
 
 	::placeholder {

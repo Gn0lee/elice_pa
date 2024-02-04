@@ -12,11 +12,16 @@ const Main = styled.main`
 	justify-content: center;
 
 	padding: 24px;
+
+	width: 100%;
+	height: 100%;
 `;
 
 const ContentContainer = styled.div`
 	max-width: 1232px;
 	width: 100%;
+
+	overflow: auto;
 `;
 
 export default function MainContainer({ children = null }: MainContainerProps): React.ReactElement {

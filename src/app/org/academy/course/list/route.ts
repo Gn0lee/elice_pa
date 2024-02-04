@@ -28,7 +28,7 @@ export const GET = async (request: NextRequest) => {
 	const priceFilter = getPriceFilter(uniq(request.nextUrl.searchParams.getAll('price')));
 
 	if (priceFilter !== null) {
-		filterConditions.$and.push(priceFilter);
+		filterConditions.$and.push({ $or: priceFilter });
 	}
 
 	const { data } = await eliceApiInstance.get<OrgCourseListEliceApiResponses>('/org/academy/course/list/', {
