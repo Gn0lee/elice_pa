@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import uniq from 'lodash.uniq';
 
-import { eliceApiInstance } from '@/utils/axiosInstance';
-import { OrgCourseListEliceApiResponses } from '@/types/course.type';
-import { getPriceFilter } from '@/utils/courseFilter';
-import { convertOrgCourseEliceApiToMiddlewareApi } from '@/utils/courseConverter';
+import { eliceApiInstance } from '@/app/utils/axiosInstance';
+import { OrgCourseListEliceApiResponses } from '@/app/types/course.type';
+import { getPriceFilter } from '@/app/utils/courseFilter';
+import { convertOrgCourseEliceApiToMiddlewareApi } from '@/app/utils/courseConverter';
 
 export const GET = async (request: NextRequest) => {
 	const offset = request.nextUrl.searchParams.get('offset');

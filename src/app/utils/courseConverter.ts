@@ -1,4 +1,4 @@
-import { OrgCourseMiddlewareApi, OrgCourseEliceApi } from '@/types/course.type';
+import { OrgCourseMiddlewareApi, OrgCourseEliceApi } from '@/app/types/course.type';
 
 export const convertOrgCourseEliceApiToMiddlewareApi = (targetCourse: OrgCourseEliceApi): OrgCourseMiddlewareApi => {
 	return {

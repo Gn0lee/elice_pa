@@ -9,13 +9,14 @@ interface MainContainerProps {
 
 const Main = styled.main`
 	display: flex;
-	align-items: center;
+	justify-content: center;
 
 	padding: 24px;
 `;
 
 const ContentContainer = styled.div`
-	max-width: 1280px;
+	max-width: 1232px;
+	width: 100%;
 `;
 
 export default function MainContainer({ children = null }: MainContainerProps): React.ReactElement {
