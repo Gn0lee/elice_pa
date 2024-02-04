@@ -20,6 +20,21 @@ const globalStyle = css`
 		background-color: #f0f1f3;
 		color: #222;
 	}
+
+	table,
+	thead,
+	tbody,
+	tfoot,
+	td,
+	th {
+		display: inline-block;
+		border-collapse: unset;
+		border-spacing: unset;
+		vertical-align: unset;
+		border-color: unset;
+		text-align: inherit;
+		text-indent: inherit;
+	}
 `;
 
 const GlobalStyle = createGlobalStyle`  
