@@ -147,8 +147,8 @@ export default function CourseCard({
 						<Image
 							src={logoFileUrl}
 							alt={title}
-							objectFit="contain"
 							quality={100}
+							style={{ objectFit: 'contain' }}
 							width={52}
 							height={52}
 							onError={() => {

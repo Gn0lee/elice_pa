@@ -6,6 +6,7 @@ import useGetOrgAcademyCourseListQuery from '@/app/hooks/useGetOrgAcademyCourseL
 import CourseListHeader from '@/app/components/CourseListHeader';
 import CourseCardBox from '@/app/components/CourseCardBox';
 import NoCourse from '@/app/components/NoCourse';
+import Pagination from '@/app/components/Pagination';
 
 const Container = styled.section`
 	margin-top: 8px;
@@ -30,10 +31,13 @@ export default function CourseListBody() {
 		return <NoCourse />;
 	}
 
+	const { totalPages } = getCourseListResponse;
+
 	return (
 		<Container>
 			<CourseListHeader />
 			<CourseCardBox />
+			<Pagination totalPages={totalPages} />
 		</Container>
 	);
 }

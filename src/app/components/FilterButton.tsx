@@ -7,6 +7,8 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { FilterInfo, FilterButtonInfo } from '@/app/hooks/useFilterInfos';
 import useAppendQueryString from '@/app/hooks/useAppendQueryString';
 import useRemoveQueryString from '@/app/hooks/useRemoveQueryString';
+import { useAppDispatch } from '@/app/utils/store';
+import { setOffset } from '@/app/slice/courseSlice';
 
 const Button = styled.button<{ $isSelected: boolean }>`
 	margin: 8px;
@@ -44,6 +46,8 @@ export default function FilterButton({
 	queryKey,
 	label,
 }: Pick<FilterInfo, 'queryKey'> & FilterButtonInfo): React.ReactElement {
+	const dispatch = useAppDispatch();
+
 	const searchParams = useSearchParams();
 
 	const pathname = usePathname();
@@ -57,6 +61,8 @@ export default function FilterButton({
 	const isSelected = searchParams.getAll(queryKey).includes(id.toString());
 
 	const handleClickFilterButton = () => {
+		dispatch(setOffset(0));
+
 		if (isSelected) {
 			router.push(`${pathname}?${removeQueryString(queryKey, id.toString())}`);
 		} else {

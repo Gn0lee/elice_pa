@@ -34,6 +34,7 @@ export interface OrgCourseMiddlewareApi {
 export interface OrgCourseListMiddlewareApiResponses {
 	courseCount: number;
 	courses: OrgCourseMiddlewareApi[];
+	totalPages: number;
 }
 
 export interface OrgCourseListEliceApiResponses {

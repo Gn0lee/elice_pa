@@ -10,6 +10,7 @@
 		"prettier": "prettier --write --config ./.prettierrc './**/*.{ts,tsx,js,jsx,json}'"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.1.0",
 		"@types/prop-types": "^15.7.11",
 		"axios": "^1.6.7",
 		"lodash.uniq": "^4.5.0",
@@ -19,6 +20,7 @@
 		"react-dom": "^18",
 		"react-icons": "^5.0.1",
 		"react-query": "^3.39.3",
+		"react-redux": "^9.1.0",
 		"styled-components": "^6.1.8",
 		"styled-normalize": "^8.1.0"
 	},
