@@ -1,3 +1,5 @@
+import SearchHeader from '@/app/components/SearchHeader';
+
 export default function Home() {
-	return <h1>elice PA</h1>;
+	return <SearchHeader />;
 }
