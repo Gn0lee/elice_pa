@@ -33,6 +33,8 @@ const PriceLabelBox = styled.div`
 	border-top: 1px solid rgb(240, 241, 243);
 
 	padding-top: 16px;
+
+	min-height: 13.8px;
 `;
 
 const PriceLabel = styled.div`
@@ -146,7 +148,6 @@ export default function CourseCard({
 							src={logoFileUrl}
 							alt={title}
 							style={{ objectFit: 'contain' }}
-							priority
 							quality={100}
 							width={52}
 							height={52}
@@ -162,7 +163,6 @@ export default function CourseCard({
 							src="/images/tdesign_image-error.png"
 							alt="error"
 							style={{ objectFit: 'contain' }}
-							priority
 							quality={100}
 							width={52}
 							height={52}
