@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import uniq from 'lodash.uniq';
 
 import { eliceApiInstance } from '@/utils/axiosInstance';
-import { OrgCourseListResponses } from '@/types/course.type';
+import { OrgCourseListEliceApiResponses } from '@/types/course.type';
 import { getPriceFilter } from '@/utils/courseFilter';
+import { convertOrgCourseEliceApiToMiddlewareApi } from '@/utils/courseConverter';
 
 export const GET = async (request: NextRequest) => {
 	const offset = request.nextUrl.searchParams.get('offset');
@@ -30,7 +31,7 @@ export const GET = async (request: NextRequest) => {
 		filterConditions.$and.push(priceFilter);
 	}
 
-	const { data } = await eliceApiInstance.get<OrgCourseListResponses>('/org/academy/course/list/', {
+	const { data } = await eliceApiInstance.get<OrgCourseListEliceApiResponses>('/org/academy/course/list/', {
 		params: {
 			filter_conditions: JSON.stringify(filterConditions),
 			sort_by: 'created_datetime.desc',
@@ -39,5 +40,12 @@ export const GET = async (request: NextRequest) => {
 		},
 	});
 
-	return NextResponse.json({ ...data }, { status: 200 });
+	return NextResponse.json(
+		{
+			courseCount: data.course_count,
+			courses: data.courses.map(convertOrgCourseEliceApiToMiddlewareApi),
+			totalPages: Math.ceil(data.course_count / countNumber),
+		},
+		{ status: 200 },
+	);
 };
