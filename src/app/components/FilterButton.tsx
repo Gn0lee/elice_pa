@@ -2,17 +2,20 @@
 
 import styled from 'styled-components';
 import React from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { FilterInfo, FilterButtonInfo } from '@/app/hooks/useFilterInfos';
+import useAppendQueryString from '@/app/hooks/useAppendQueryString';
+import useRemoveQueryString from '@/app/hooks/useRemoveQueryString';
 
-const Button = styled.button`
+const Button = styled.button<{ $isSelected: boolean }>`
 	margin: 8px;
-	color: rgb(94, 95, 97);
+	color: ${props => (props.$isSelected ? 'rgb(255, 255, 255)' : 'rgb(94, 95, 97)')};
 
 	display: flex;
 	align-items: center;
 
-	border: 1px solid rgb(240, 241, 243);
+	border: 1px solid ${props => (props.$isSelected ? 'rgb(82, 79, 161)' : 'rgb(240, 241, 243)')};
 	border-radius: 14px;
 
 	font-weight: normal;
@@ -27,7 +30,13 @@ const Button = styled.button`
 
 	font-size: 14px;
 
-	background: rgb(240, 241, 243);
+	background: ${props => (props.$isSelected ? 'rgb(82, 79, 161)' : 'rgb(240, 241, 243)')};
+
+	&:hover {
+		color: ${props => (props.$isSelected ? 'rgb(240, 241, 243)' : 'rgb(0, 0, 0)')};
+		background: ${props => (props.$isSelected ? 'rgb(66, 63, 140)' : 'rgb(225, 226, 228)')};
+		border-color: ${props => (props.$isSelected ? 'rgb(66, 63, 140)' : 'rgb(225, 226, 228)')};
+	}
 `;
 
 export default function FilterButton({
@@ -35,5 +44,29 @@ export default function FilterButton({
 	queryKey,
 	label,
 }: Pick<FilterInfo, 'queryKey'> & FilterButtonInfo): React.ReactElement {
-	return <Button>{label}</Button>;
+	const searchParams = useSearchParams();
+
+	const pathname = usePathname();
+
+	const router = useRouter();
+
+	const appendQueryString = useAppendQueryString();
+
+	const removeQueryString = useRemoveQueryString();
+
+	const isSelected = searchParams.getAll(queryKey).includes(id.toString());
+
+	const handleClickFilterButton = () => {
+		if (isSelected) {
+			router.push(`${pathname}?${removeQueryString(queryKey, id.toString())}`);
+		} else {
+			router.push(`${pathname}?${appendQueryString(queryKey, id.toString())}`);
+		}
+	};
+
+	return (
+		<Button $isSelected={isSelected} onClick={handleClickFilterButton}>
+			{label}
+		</Button>
+	);
 }

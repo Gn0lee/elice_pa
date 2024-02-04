@@ -4,7 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 import useCreateQueryString from '@/app/hooks/useCreateQueryString';
-import useRemoveQueryString from '@/app/hooks/useRemoveQueryString';
+import useDeleteQueryString from '@/app/hooks/useDeleteQueryString';
 import { QUERY_STRING_KEYS } from '@/app/constants/queryString';
 
 export default function useDebounceKeyword({ keyword }: { keyword: string }) {
@@ -14,7 +14,7 @@ export default function useDebounceKeyword({ keyword }: { keyword: string }) {
 
 	const createQueryString = useCreateQueryString();
 
-	const removeQueryString = useRemoveQueryString();
+	const removeQueryString = useDeleteQueryString();
 
 	useEffect(() => {
 		const debounceTimeout = setTimeout(() => {
