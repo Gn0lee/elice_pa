@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import React from 'react';
-import Head from 'next/head';
 
-import StyledComponentsRegistry from '@/lib/registry';
-import GlobalStyle from '@/lib/GlobalStyle';
+import StyledComponentsRegistry from '@/app/lib/registry';
+import GlobalStyle from '@/app/lib/GlobalStyle';
+import MainContainer from '@/app/components/MainContainer';
 
 export const metadata: Metadata = {
 	title: 'elice PA',
@@ -17,20 +17,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<Head>
-				<link rel="preconnect" href="https://cdn.jsdelivr.net" />
-				<link
-					rel="stylesheet preload"
-					as="style"
-					crossOrigin=""
-					type="text/css"
-					href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
-				/>
-			</Head>
 			<body>
 				<StyledComponentsRegistry>
 					<GlobalStyle />
-					{children}
+					<MainContainer>{children}</MainContainer>
 				</StyledComponentsRegistry>
 			</body>
 		</html>

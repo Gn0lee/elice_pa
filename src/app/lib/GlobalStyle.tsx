@@ -5,6 +5,11 @@ import { normalize } from 'styled-normalize';
 
 const globalStyle = css`
 	${normalize}
+	html {
+		width: 100%;
+		height: 100%;
+	}
+
 	body {
 		margin: 0;
 		padding: 0;
