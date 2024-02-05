@@ -33,15 +33,15 @@ npm run dev
 ## 디렉토리 구조
 
 ```
-├── src/
-│   ├── api
-│   ├── components
-│   ├── constants
-│   ├── font
-│   ├── hooks
-│   ├── slice
-│   ├── types
-│   └── utils
+├── src/app
+│       ├── api
+│       ├── components
+│       ├── constants
+│       ├── font
+│       ├── hooks
+│       ├── slice
+│       ├── types
+│       └── utils
 ```
 - api
   -  클라이언트에서 호출하는 api를 포함합니다.
