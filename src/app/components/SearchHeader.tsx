@@ -1,7 +1,6 @@
 'use client';
 
 import styled from 'styled-components';
-import React from 'react';
 
 import SearchArea from '@/app/components/SearchArea';
 import FilterTable from '@/app/components/FilterTable';
@@ -12,7 +11,7 @@ const Container = styled.div`
 	gap: 4px;
 `;
 
-export default function SearchHeader(): React.ReactElement {
+export default function SearchHeader() {
 	return (
 		<Container>
 			<SearchArea />

@@ -1,5 +1,3 @@
-'use client';
-
 import styled from 'styled-components';
 import React from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';

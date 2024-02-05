@@ -1,5 +1,3 @@
-'use client';
-
 import { ChangeEventHandler, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styled from 'styled-components';
