@@ -31,21 +31,28 @@ export const GET = async (request: NextRequest) => {
 		filterConditions.$and.push({ $or: priceFilter });
 	}
 
-	const { data } = await eliceApiInstance.get<OrgCourseListEliceApiResponses>('/org/academy/course/list/', {
-		params: {
-			filter_conditions: JSON.stringify(filterConditions),
-			sort_by: 'created_datetime.desc',
-			offset: offsetNumber,
-			count: countNumber,
-		},
-	});
+	try {
+		const { data } = await eliceApiInstance.get<OrgCourseListEliceApiResponses>('/org/academy/course/list/', {
+			params: {
+				filter_conditions: JSON.stringify(filterConditions),
+				sort_by: 'created_datetime.desc',
+				offset: offsetNumber,
+				count: countNumber,
+			},
+		});
 
-	return NextResponse.json(
-		{
-			courseCount: data.course_count,
-			courses: data.courses.map(convertOrgCourseEliceApiToMiddlewareApi),
-			totalPages: Math.ceil(data.course_count / countNumber),
-		},
-		{ status: 200 },
-	);
+		return NextResponse.json(
+			{
+				courseCount: data.course_count,
+				courses: data.courses.map(convertOrgCourseEliceApiToMiddlewareApi),
+				totalPages: Math.ceil(data.course_count / countNumber),
+			},
+			{ status: 200 },
+		);
+	} catch (e) {
+		// eslint-disable-next-line
+		console.log(e);
+
+		return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+	}
 };
